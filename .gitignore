@@ -1,0 +1,60 @@
+*.pyc
+*.pyo
+*~
+*.sqlite3
+*.backup
+*.p12
+*.pem
+sandbox/*
+gu_production*.sql
+local_settings.py
+groundup/media/*
+groundup/static/*
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+media/
+*-journal
+output.txt
+fbtest.py
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+
+# Django stuff:
+*.log
+*.pot
+
+whoosh_index/
+
+# Sphinx documentation
+docs/_build/
+guarticles2_tidy.html
+
+include/
+lib/
+pip-selfcheck.json
+share/
+db_backup*.sql
+groundup/local_settings_flymake.py
+static/CACHE

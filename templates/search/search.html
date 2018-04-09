@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load highlight %}
+
+{% block search %} {% endblock %}
+
+{% block title %}
+    Search {{block.super}}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+	<div class="row">
+	    <div class="col-xs-12 col-md-8">
+		{% if query %}
+		    <h2>Search results</h2>
+                    <p>
+                        {% if method == "DATE" %}
+                            Results are sorted by publication date.
+                            <a href="?q={{query}}&page={{page.number}}&method=RELEVANCE">
+                                Sort by relevance.
+                            </a>
+                        {% else %}
+                            Results are sorted by relevance.
+                            <a href="?q={{query}}&page={{page.number}}&method=DATE">
+                                Sort by publication date.
+                            </a>
+                        {% endif %}
+                    </p>
+		    {% for article in page.object_list %}
+			<h4>
+			    <a href="{{ article.get_absolute_url }}">{{ article.title|safe }}</a>
+			</h4>
+			<p>
+			   {{article.published|date:"j M Y"}}
+			</p>
+                        <p>
+                            {% with article.body|safe as body %}
+			        {% highlight body with query %}
+			    {% endwith %}
+                        </p>
+		    {% empty %}
+			<p>No results found.</p>
+		    {% endfor %}
+
+
+		    {% block pagination %}
+			{% include 'paginator.html' with page_obj=page query=query %}
+		    {% endblock %}
+                {% else %}
+                    <h2>Please enter text to search for.</h2>
+		{% endif %}
+	    </div>
+	</div>
+    </div>
+{% endblock %}

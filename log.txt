@@ -1,0 +1,233 @@
+ERROR 2018-04-09 09:32:08,631 exception 2268 7960 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\ImplementationDjango\djangonews\newsroom\utils.py", line 28, in _view
+    return decorated_view(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\decorators\http.py", line 90, in inner
+    res_last_modified = get_last_modified()
+  File "C:\Python27\lib\site-packages\django\views\decorators\http.py", line 83, in get_last_modified
+    dt = last_modified_func(request, *args, **kwargs)
+  File "E:\ImplementationDjango\djangonews\newsroom\views.py", line 68, in last_article_modified
+    return models.Article.objects.published().latest("modified").modified
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 558, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 552, in _earliest_or_latest
+    return obj.get()
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Article matching query does not exist.
+ERROR 2018-04-09 09:32:09,546 basehttp 2268 7960 "GET / HTTP/1.1" 500 115046
+ERROR 2018-04-09 09:32:10,677 exception 2268 5868 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 131, in get_response
+    response = middleware_method(request, response)
+  File "C:\Python27\lib\site-packages\django\contrib\redirects\middleware.py", line 31, in process_response
+    current_site = get_current_site(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:10,686 exception 2268 5040 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 131, in get_response
+    response = middleware_method(request, response)
+  File "C:\Python27\lib\site-packages\django\contrib\redirects\middleware.py", line 31, in process_response
+    current_site = get_current_site(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:11,134 basehttp 2268 5868 "GET /favicon.ico HTTP/1.1" 500 91628
+ERROR 2018-04-09 09:32:11,230 basehttp 2268 5868 "GET /favicon.ico HTTP/1.1" 500 59
+ERROR 2018-04-09 09:32:11,309 basehttp 2268 5040 "GET /favicon.ico HTTP/1.1" 500 91688
+ERROR 2018-04-09 09:32:15,640 exception 2268 7376 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\decorators\debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 137, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 80, in dispatch
+    **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 94, in get
+    request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\edit.py", line 174, in get
+    return self.render_to_response(self.get_context_data())
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 168, in get_context_data
+    site = get_current_site(self.request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:15,821 basehttp 2268 7376 "GET /accounts/login/ HTTP/1.1" 500 143895
+ERROR 2018-04-09 09:32:18,423 exception 2268 8080 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\decorators\debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 137, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 80, in dispatch
+    **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 94, in get
+    request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\edit.py", line 174, in get
+    return self.render_to_response(self.get_context_data())
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 168, in get_context_data
+    site = get_current_site(self.request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:18,582 basehttp 2268 8080 "GET /accounts/login/ HTTP/1.1" 500 143895
+ERROR 2018-04-09 09:32:20,019 exception 2268 5748 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\decorators\debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 137, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 80, in dispatch
+    **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 94, in get
+    request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\edit.py", line 174, in get
+    return self.render_to_response(self.get_context_data())
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 168, in get_context_data
+    site = get_current_site(self.request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:20,190 basehttp 2268 5748 "GET /accounts/login/ HTTP/1.1" 500 143895
+ERROR 2018-04-09 09:32:21,989 exception 2268 7512 Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\decorators\debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 137, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 80, in dispatch
+    **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 94, in get
+    request, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\views\generic\edit.py", line 174, in get
+    return self.render_to_response(self.get_context_data())
+  File "C:\Python27\lib\site-packages\allauth\account\views.py", line 168, in get_context_data
+    site = get_current_site(self.request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\shortcuts.py", line 15, in get_current_site
+    return Site.objects.get_current(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 65, in get_current
+    return self._get_site_by_request(request)
+  File "C:\Python27\lib\site-packages\django\contrib\sites\models.py", line 50, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+  File "C:\Python27\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Site matching query does not exist.
+ERROR 2018-04-09 09:32:22,211 basehttp 2268 7512 "GET /accounts/login/ HTTP/1.1" 500 143895

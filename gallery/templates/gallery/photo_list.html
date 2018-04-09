@@ -1,0 +1,42 @@
+{% extends "gallery/base.html" %}
+{% load staticfiles %}
+{% load fb_versions %}
+
+{% block title %}
+    {{block.super}} | Photos
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div id="gallery-breadcrumbs">
+        <a href="{% url 'gallery.front' %}">Gallery front</a>&nbsp;|&nbsp;
+        Photos
+    </div>
+
+{% endblock %}
+
+{% block gallery_above_line %}
+    <h1>
+        Photos
+        {% if keyword %}
+            tagged with: <em>{{keyword}}</em>
+        {% elif search_string %}
+            searched: <em>{{search_string}}</em>
+        {% endif %}
+        {% if photographer %}
+            by {{photographer}}
+        {% endif %}
+        {% if featured %}
+            | Featured
+        {% endif %}
+    </h1>
+
+{% endblock %}
+
+
+{% block gallery_below_line %}
+
+    <div class="row" id="gallery-photo-list">
+        {% include page_template %}
+    </div>
+
+{% endblock %}

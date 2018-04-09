@@ -1,0 +1,134 @@
+{% load staticfiles %}
+{% load compress %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+	    {% block title %} | GroundUp{% endblock %}
+	</title>
+	<!-- {% now "SHORT_DATETIME_FORMAT" %} -->
+	<link rel="shortcut icon"
+              type="image/x-icon"
+	      href="{% static  'newsroom/images/favicon.ico' %}" />
+
+	{% block seo_fields %}
+	    <meta property="og:description"
+		  content="GroundUp publishes original public interest news. We mainly cover education, health, sanitation, immigration and human rights stories."/>
+	{% endblock %}
+
+	{% block facebook-identifier %}
+	    <meta property="fb:app_id" content="794347254025697" />
+	{% endblock %}
+
+	{% block analytics %}
+            {% compress js %}
+	    {% include "google_analytics.html" %}
+            {% include "piwik.html" %}
+            {% endcompress %}
+	{% endblock %}
+
+	{% block additional_head %}
+	{% endblock %}
+
+        {% block bootstrap-css %}
+	    {% include "bootstrap_css.html" %}
+	{% endblock %}
+
+        {% block newsroom-css %}
+
+            {% comment %}
+
+            Roboto font is default in Chrome, exists
+            in Firefox.  Why slow down web load for something that exists for
+            most users, and its replacement with sans-serif will be just fine on
+            browsers that don't support it.
+
+            <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:400,700,700italic,300italic,300|Roboto+Condensed:300,300italic,400,700,700italic"
+            type='text/css' />
+
+            {% endcomment %}
+
+            {% compress css %}
+	    <link rel="stylesheet"
+		  href="{% static 'newsroom/css/newsroom_styles.css' %}"
+                  type='text/css'/>
+            {% endcompress %}
+	{% endblock %}
+
+	{% block css-override %}
+	{% endblock %}
+
+
+        {% block top-js %}
+
+            {% if ACME_ADS %}
+                <script
+                    data-cfasync='false'
+                    async='async'
+                    src='https://www.googletagservices.com/tag/js/gpt.js'>
+                </script>
+                <script>
+                 {% compress js %}
+                 {% include "acme_head.js" %}
+                 {% endcompress %}
+                </script>
+            {% endif %}
+        {% endblock %}
+
+
+    </head>
+
+    <body>
+
+	{% block body %}
+
+	    {% block banner %}
+		{% include 'banner.html' %}
+	    {% endblock %}
+
+            <div id="BelowTheBanner" class="{{content_type}}">
+	        {% block messages %}
+		    {% include 'messages.html' %}
+	        {% endblock %}
+
+	        {% block content-header %}
+	        {% endblock %}
+
+                {% block content-wrapper %}
+	            {% block content %}
+	            {% endblock %}
+                {% endblock %}
+
+	        {% block admin-area %}
+		    {% if request.user.is_staff %}
+		        <div id="admin-area">
+			    <div id="admin-user">
+			        {{request.user}}
+			    </div>
+			    {% block admin-area-additional %}
+			    {% endblock %}
+		        </div>
+		    {% endif %}
+	        {% endblock %}
+
+	        {% block footer %}
+		    {% include 'footer.html' %}
+	        {% endblock %}
+            </div>
+
+
+	    {% block javascript-includes %}
+		{% include 'javascripts.html' %}
+	    {% endblock %}
+
+	{% endblock %}
+
+    </body>
+
+</html>

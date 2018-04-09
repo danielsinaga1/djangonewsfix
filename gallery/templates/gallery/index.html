@@ -1,0 +1,127 @@
+{% extends "gallery/base.html" %}
+
+{% load compress %}
+{% load fb_versions %}
+{% load staticfiles %}
+
+{% block additional_head %}
+
+    {{block.super}}
+
+    <link rel="stylesheet"
+	  href="{% static 'newsroom/css/pgwslider.min.css' %}"
+    />
+
+{% endblock %}
+
+{% block gallery_above_line %}
+
+    <ul class="pgwSlider">
+
+        {% for photo in featured_photos %}
+            <li>
+                <a href="{% url 'photo.detail' photo.pk %}">
+                    <img
+                        src="{% version photo.image 'extra_large' %}"
+                        alt="{{photo.suggested_caption}}{% if photo.photographer %} - {{photo.photographer}}{% endif %}"
+                    />
+                </a>
+            </li>
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}
+
+
+{% block gallery-sidebar %}
+
+
+    <div class="sidebar-block gallery-block">
+         {% include "gallery/gallery_name.html" %}
+    </div>
+
+    <div class="sidebar-block gallery-block">
+        {% include "gallery/how_to_use.html" %}
+    </div>
+
+
+    <div id="gallery-sidebar-advert" class="sidebar-block gallery-block">
+
+        {% include "advert.html" %}
+
+    </div>
+
+{% endblock %}
+
+
+{% block gallery_below_line %}
+
+    <h2><a href="{% url 'photo.list' %}">Photos</a></h2>
+
+    <div class="row">
+        {% for photo in photos %}
+            <div class="col-xs-6 col-md-3">
+                {% include "gallery/thumbnail.html" %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row" id="gallery-content-blocks">
+        <div class="col-xs-12">
+            {% include "blocks/blocks.html" %}
+        </div>
+    </div>
+
+    <div class="row" id="gallery-home-albums">
+        <div class="col-xs-12">
+            <h2><a href="{% url 'album.list' %}">ALBUMS</a></h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for album in albums %}
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <div class="caption album-head">
+                        <a href="{% url 'album.detail' album.pk %}">
+                            {{album.name|truncatechars:25}}
+                        </a>
+                    </div>
+                    {% with album.get_random_photo as photo %}
+                        {% if photo %}
+                            <a href="{% url 'album.detail' album.pk %}">
+                                <img src="{% version photo.image 'medium' %}"
+                                     alt="{{photo.alt}}"
+                                />
+                            </a>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascript-includes %}
+
+    {{block.super}}
+
+    {% compress js %}
+    <script src={% static 'newsroom/js/pgwslider.min.js' %}>
+    </script>
+    <script>
+     $(document).ready(function() {
+         var pgwSlider = $('.pgwSlider').pgwSlider();
+         pgwSlider.reload({
+	     displayControls : true,
+	     displayList: false,
+	     intervalDuration: 6000,
+             maxHeight: 496,
+             adaptiveHeight: true
+         });
+     });
+    </script>
+    {% endcompress %}
+
+{% endblock %}

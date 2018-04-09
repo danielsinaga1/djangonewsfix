@@ -1,0 +1,21 @@
+<div id="messages" class="container" >
+    <div class="row">
+	<div class="col-xs-12 col-md-8">
+	    {% for message in messages %}
+		<div class="alert
+			    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+			    alert-danger
+			    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+			    alert-success
+                            {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                            alert-warning
+                            {% else %}
+                            alert-success
+			    {% endif %}
+			    ">
+		    {{message|safe}}
+		</div>
+	    {% endfor %}
+	</div>
+    </div>
+</div>

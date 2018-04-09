@@ -1,0 +1,145 @@
+{% extends "gallery/base.html" %}
+{% load fb_versions %}
+
+{% block title %}
+    {{block.super}} | {{photo.alt}}
+{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="{{photo.alt}}">
+{% endblock %}
+
+{% block gallery_title %}
+    {{photo.alt}}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <div id="gallery-breadcrumbs">
+        <a href="{% url 'gallery.front' %}">Gallery front</a>&nbsp;|&nbsp;
+        <a href="{% url 'photo.list' %}">Photos</a>&nbsp;|&nbsp;
+        {{photo.alt}}
+    </div>
+
+{% endblock %}
+
+
+
+{% block gallery_above_line %}
+
+    <div>
+        <figure id="gallery-photo">
+            <img src="{% version photo.image 'extra_large' %}"
+                 alt="{{photo.alt}}" />
+        </figure>
+    </div>
+
+{% endblock %}
+
+{% block gallery-sidebar %}
+
+    <div id="gallery-photo-details">
+        <h1>{{photo.alt}}</h1>
+
+        {{photo.suggested_caption|safe}}
+
+
+        <div class="dropdown">
+            <a id="drop1" href="#"
+               role="button"
+               class="dropdown-toggle btn btn-default btn-info"
+               data-toggle="dropdown">Download<b class="caret"></b></a>
+
+            <ul class="dropdown-menu">
+                {% for version in versions %}
+                    {% version photo.image version.0 as image %}
+                    <li>
+                        <a href="{{image.url}}" download>
+                            {{version.1.verbose_name|capfirst}}
+                            ({{image.width}}px X {{image.height}}px)
+                        </a>
+                    </li>
+                {% endfor %}
+                <li>
+                    <a href="{{photo.image.url}}" download>
+                        Original ({{photo.image.width}}px X {{photo.image.height}}px)
+                    </a>
+                    <li>
+            </ul>
+
+        </div>
+
+
+
+        <div id="gallery-photo-labels">
+            <div class="col-xs-4">
+                <span class="photo-label">Date taken</span>
+            </div>
+            <div class="col-xs-8">
+                <a href="{% url 'photo.list' %}?date={{photo.date_taken|date:"Ymd"}}">
+                    {{photo.date_taken|date:"j F Y"}}
+                </a>
+            </div>
+
+            <div class="col-xs-4"><span class="photo-label">Photo by</span></div>
+            <div class="col-xs-8">
+                <a href="{% url 'photo.list' %}?photographer={{photo.photographer.pk}}">
+                    {{photo.photographer}}
+                </a>
+            </div>
+
+            <div class="col-xs-4">
+                <span class="photo-label">How to credit</span>
+            </div>
+
+            <div class="col-xs-8">
+                {% if photo.credit %}
+                    {{photo.credit}}
+                {% else %}
+                    {{photo.photographer}}/GroundUp
+                {% endif %}
+            </div>
+
+            <div class="col-xs-4"><span class="photo-label">Albums</span></div>
+            <div class="col-xs-8">
+                {% for album in photo.albums.all %}
+                    <a href="{% url 'album.detail' album.pk %}">{{album}}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-xs-4">
+                <span class="photo-label">Keywords</span>
+            </div>
+            <div class="col-xs-8">
+                {% for keyword in photo.keywords.all %}
+                    <a href="{% url 'photo.list' keyword %}">
+                        {{keyword}}</a>{% if not forloop.last %},&nbsp;{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if photo.copyright %}
+            {{photo.copyright|safe}}
+        {% else %}
+            {{default_copyright|safe}}
+        {% endif %}
+
+    </div>
+    {% include "gallery/how_to_use.html" %}
+{% endblock %}
+
+
+
+{% block gallery_below_line %}
+    <div id="gallery-below-line-advert">
+    {% include "advert.html" %}
+    </div>
+
+    {% if photos %}
+        <h2><a href="{% url 'photo.list' %}">Related photos</a></h2>
+        <div id="gallery-related-photos" class="row">
+            {% include page_template %}
+        </div>
+    {% endif %}
+
+
+{% endblock %}

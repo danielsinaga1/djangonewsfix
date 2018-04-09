@@ -1,0 +1,36 @@
+beautifulsoup4==4.5.3
+Django==1.11.5
+django-filebrowser==3.9.1
+django-grappelli==2.10.1
+facebook-sdk
+google-api-python-client
+html2text
+httplib2
+# Upgrading this will require a painful time-consuming
+# change to get most popular articles from Google Analytics.
+oauth2client==1.5.2
+oauthlib
+Pillow
+psycopg2
+pycrypto
+pytz
+requests
+requests-oauthlib
+sqlparse
+tweepy
+Unidecode
+uritemplate
+wheel
+django-haystack
+python-dateutil
+piexif
+django-allauth
+smartypants
+django-ajax-selects
+django-debug-toolbar
+django-el-pagination
+csscompressor
+django-compressor
+django-recaptcha
+django-allauth-2fa
+
